@@ -17,7 +17,6 @@ public func configure(
     try routes(router)
     services.register(router, as: Router.self)
 
-
     // Configure a SQLite database
     var databases = DatabaseConfig()
     try databases.add(database: SQLiteDatabase(storage: .memory), as: .sqlite)
@@ -26,6 +25,7 @@ public func configure(
     // Configure migrations
     var migrations = MigrationConfig()
     migrations.add(model: Acronym.self, database: .sqlite)
+    migrations.add(model: User.self, database: .sqlite)
     services.register(migrations)
 
     // Configure the rest of your application here
