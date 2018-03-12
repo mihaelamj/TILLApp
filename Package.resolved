@@ -83,6 +83,15 @@
         }
       },
       {
+        "package": "SQLite",
+        "repositoryURL": "https://github.com/vapor/sqlite.git",
+        "state": {
+          "branch": null,
+          "revision": "951e4f128d15a8a49e009fcf7a49f8e66e189eb7",
+          "version": "3.0.0-rc.1"
+        }
+      },
+      {
         "package": "Service",
         "repositoryURL": "https://github.com/vapor/service.git",
         "state": {
@@ -101,11 +110,11 @@
         }
       },
       {
-        "package": "SQLite",
-        "repositoryURL": "https://github.com/vapor/sqlite.git",
+        "package": "TLS",
+        "repositoryURL": "https://github.com/vapor/tls.git",
         "state": {
           "branch": null,
-          "revision": "951e4f128d15a8a49e009fcf7a49f8e66e189eb7",
+          "revision": "648e653758ad29f7087c95a91bc0d183712b94ab",
           "version": "3.0.0-rc.1"
         }
       },
@@ -116,15 +125,6 @@
           "branch": null,
           "revision": "cda3174c5e029526a5b11b19fcfd83bd65b6876a",
           "version": "1.0.0-rc.1.1"
-        }
-      },
-      {
-        "package": "TLS",
-        "repositoryURL": "https://github.com/vapor/tls.git",
-        "state": {
-          "branch": null,
-          "revision": "648e653758ad29f7087c95a91bc0d183712b94ab",
-          "version": "3.0.0-rc.1"
         }
       },
       {
