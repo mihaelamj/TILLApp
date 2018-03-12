@@ -10,7 +10,6 @@ final class Acronym: Codable {
     self.short = short
     self.long = long
   }
-  
 }
 
 //extension Acronym: Model {

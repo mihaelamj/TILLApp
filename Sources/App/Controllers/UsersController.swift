@@ -21,7 +21,7 @@ struct UsersController: RouteCollection {
     }
   }
   
-  //GET /api/users/42
+  //GET /api/users/UDID
   func getHandler(_ req: Request) throws -> Future<User> {
     return try req.parameter(User.self)
   }
