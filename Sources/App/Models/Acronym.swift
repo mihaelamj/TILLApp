@@ -30,5 +30,9 @@ extension Acronym {
   var creator: Parent<Acronym, User> {
     return parent(\.creatorID) //key-path
   }
+  
+  var categories: Siblings<Acronym, Category, AcronymCategoryPivot> {
+    return siblings()
+  }
 }
 
