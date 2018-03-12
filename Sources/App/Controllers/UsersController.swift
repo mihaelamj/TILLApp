@@ -7,6 +7,7 @@ struct UsersController: RouteCollection {
     usersRoute.get(use: getAllHandler)
     usersRoute.post(use: createHandler)
     usersRoute.get(User.parameter, use: getHandler)
+    usersRoute.get(User.parameter, "acronyms", use: getAcronymsHandler)
   }
   
   //GET /api/users
@@ -24,6 +25,12 @@ struct UsersController: RouteCollection {
   //GET /api/users/UDID
   func getHandler(_ req: Request) throws -> Future<User> {
     return try req.parameter(User.self)
+  }
+  
+  func getAcronymsHandler(_ req: Request) throws -> Future<[Acronym]> {
+    return try req.parameter(User.self).flatMap(to: [Acronym].self) { user in
+      return try user.acronyms.query(on: req).all()
+    }
   }
   
 }
