@@ -10,6 +10,7 @@ struct AcronymsController: RouteCollection {
     acronymsRoute.get(Acronym.parameter, use: getHandler)
     acronymsRoute.delete(Acronym.parameter, use: deleteHandler)
     acronymsRoute.put(Acronym.parameter, use: updateHandler)
+    acronymsRoute.put(Acronym.parameter, "creator", use: getCreatorHandle)
   }
   
   //GET /api/acronyms
@@ -44,6 +45,12 @@ struct AcronymsController: RouteCollection {
                         acronym.long = updatedAcronym.long
                         return acronym.save(on: req)
                         
+    }
+  }
+  
+  func getCreatorHandle(_ req: Request) throws -> Future<User> {
+    return try req.parameter(Acronym.self).flatMap(to: User.self) { acronym in
+      return acronym.creator.get(on: req)
     }
   }
   
