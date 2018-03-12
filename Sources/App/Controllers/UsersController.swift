@@ -27,11 +27,14 @@ struct UsersController: RouteCollection {
     return try req.parameter(User.self)
   }
   
+  //GET /api/users/E569E022-FD51-4A77-A4AE-FB8EF6CFF958/acronyms
+  //GET /api/users/UDID/acronyms
   func getAcronymsHandler(_ req: Request) throws -> Future<[Acronym]> {
     return try req.parameter(User.self).flatMap(to: [Acronym].self) { user in
       return try user.acronyms.query(on: req).all()
     }
   }
+
   
 }
 

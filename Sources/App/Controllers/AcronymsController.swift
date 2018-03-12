@@ -10,7 +10,7 @@ struct AcronymsController: RouteCollection {
     acronymsRoute.get(Acronym.parameter, use: getHandler)
     acronymsRoute.delete(Acronym.parameter, use: deleteHandler)
     acronymsRoute.put(Acronym.parameter, use: updateHandler)
-    acronymsRoute.put(Acronym.parameter, "creator", use: getCreatorHandle)
+    acronymsRoute.get(Acronym.parameter, "creator", use: getCreatorHandle)
   }
   
   //GET /api/acronyms
