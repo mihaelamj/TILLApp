@@ -13,7 +13,7 @@ public func configure(
     // Register providers first
     try services.register(FluentSQLiteProvider())
   
-    //register Leaf
+    //register Leaf service
     try services.register(LeafProvider())
 
     // Register routes to the router
