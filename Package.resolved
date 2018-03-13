@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/vapor/engine.git",
         "state": {
           "branch": null,
-          "revision": "cfe3ffc04b0316564a40ad8e5dfb9a355d936c25",
-          "version": "3.0.0-rc.1"
+          "revision": "e12531d2b37895d21cd8b8d13ad930fa85217e9e",
+          "version": "3.0.0-rc.1.0.1"
         }
       },
       {
@@ -70,6 +70,15 @@
         "state": {
           "branch": null,
           "revision": "a2d70d95b660631d591a7aa1ed1a65c91f67acf3",
+          "version": "3.0.0-rc.1"
+        }
+      },
+      {
+        "package": "Leaf",
+        "repositoryURL": "https://github.com/vapor/leaf.git",
+        "state": {
+          "branch": null,
+          "revision": "25583fb3e3e40bf38ef7f762a05690f07d604060",
           "version": "3.0.0-rc.1"
         }
       },
@@ -114,8 +123,8 @@
         "repositoryURL": "https://github.com/vapor/tls.git",
         "state": {
           "branch": null,
-          "revision": "648e653758ad29f7087c95a91bc0d183712b94ab",
-          "version": "3.0.0-rc.1"
+          "revision": "cfd8cc0f06841ee15469c5fc98131e47511f8e94",
+          "version": "3.0.0-rc.1.0.1"
         }
       },
       {

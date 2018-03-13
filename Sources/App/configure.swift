@@ -1,5 +1,6 @@
 import FluentSQLite
 import Vapor
+import Leaf
 
 /// Called before your application initializes.
 ///
@@ -11,6 +12,9 @@ public func configure(
 ) throws {
     // Register providers first
     try services.register(FluentSQLiteProvider())
+  
+    //register Leaf
+    try services.register(LeafProvider())
 
     // Register routes to the router
     let router = EngineRouter.default()
@@ -21,6 +25,7 @@ public func configure(
     var databases = DatabaseConfig()
     try databases.add(database: SQLiteDatabase(storage: .memory), as: .sqlite)
     services.register(databases)
+  
 
     // Configure migrations
     var migrations = MigrationConfig()
