@@ -41,6 +41,11 @@ struct AcronymsController: RouteCollection {
     }
   }
   
+//from the forum, new, better version
+//  func deleteHandler(_ request:Request) throws -> Future<HTTPStatus> {
+//    return try request.parameter(Acronym.self).delete(on: request).transform(to: .noContent)
+//  }
+  
   //PUT /api/acronyms (JSON in the body)
   func updateHandler(_ req:Request) throws -> Future<Acronym> {
     return try flatMap(to:Acronym.self, req.parameter(Acronym.self),
