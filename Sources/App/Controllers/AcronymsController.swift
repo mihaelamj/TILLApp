@@ -6,8 +6,6 @@ struct AcronymsController: RouteCollection {
   func boot(router: Router) throws {
     let acronymsRoute = router.grouped("api", "acronyms")
     
-//    let a = Acronym.parameter
-    
     acronymsRoute.get(use: getAllHandler)
     acronymsRoute.post(use: createHandler)
     acronymsRoute.get(Acronym.parameter, use: getHandler)
@@ -25,9 +23,18 @@ struct AcronymsController: RouteCollection {
   }
   
   //POST /api/acronyms/ (JSON in the body)
-  func createHandler(_ req: Request) throws -> Future<Acronym> {
+  func createHandler1(_ req: Request) throws -> Future<Acronym> {
     let acronym = try req.content.decode(Acronym.self).await(on: req)
     return acronym.save(on: req)
+  }
+  
+  func createHandler(_ req: Request) throws -> Future<Acronym> {
+    let newAcronym = try req.content.decode(Acronym.self).await(on: req)
+    let cnt = try Acronym.query(on: req).filter(\.short == newAcronym.short).count().await(on: req)
+    guard cnt == 0 else {
+      throw Abort(.badRequest, reason: "You already have \(newAcronym.short).")
+    }
+    return newAcronym.save(on: req)
   }
   
   //GET /api/acronyms/42

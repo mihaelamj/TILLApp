@@ -1,3 +1,17 @@
+final class Acronym: Codable {
+  var id : Int?
+  var short: String
+  var long: String
+  var creatorID: User.ID
+  
+  init(short: String, long: String, creatorID: User.ID) {
+    self.short = short
+    self.long = long
+    self.creatorID = creatorID
+  }
+}
+
+#if Xcode
 import FluentSQLite
 import Vapor
 
@@ -7,10 +21,9 @@ import Vapor
 //  static let idKey: IDKey = \Acronym.id
 //}
 //or just conform to SQLiteModel
-extension Acronym: SQLiteModel {}
-
-extension Acronym: Content{}
-extension Acronym: Migration{}
+extension Acronym : SQLiteModel {}
+extension Acronym : Content{}
+extension Acronym : Migration{}
 
 //extension to get our parent, creator is a computer property
 extension Acronym {
@@ -22,4 +35,4 @@ extension Acronym {
     return siblings()
   }
 }
-
+#endif
