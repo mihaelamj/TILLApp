@@ -6,6 +6,8 @@ struct AcronymsController: RouteCollection {
   func boot(router: Router) throws {
     let acronymsRoute = router.grouped("api", "acronyms")
     
+//    let a = Acronym.parameter
+    
     acronymsRoute.get(use: getAllHandler)
     acronymsRoute.post(use: createHandler)
     acronymsRoute.get(Acronym.parameter, use: getHandler)
@@ -41,15 +43,22 @@ struct AcronymsController: RouteCollection {
     }
   }
   
+  
 //from the forum, new, better version
-//  func deleteHandler(_ request:Request) throws -> Future<HTTPStatus> {
-//    return try request.parameter(Acronym.self).delete(on: request).transform(to: .noContent)
-//  }
+  /*
+   in the video you said parameter call returns a future and we cannot call delete on future itself.
+   But when I try this it works fine. Is it wrong this way ?
+   you are right!
+   Looks like those conveniences were added after the videos were recorded - nice find!
+   */
+  func deleteHandler1(_ req:Request) throws -> Future<HTTPStatus> {
+    return try req.parameter(Acronym.self).delete(on: req).transform(to: .noContent)
+  }
   
   //PUT /api/acronyms (JSON in the body)
   func updateHandler(_ req:Request) throws -> Future<Acronym> {
     return try flatMap(to:Acronym.self, req.parameter(Acronym.self),
-                       req.content.decode(Acronym.self)) { acronym, updatedAcronym in
+                        req.content.decode(Acronym.self)) { acronym, updatedAcronym in
                         acronym.short = updatedAcronym.short
                         acronym.long = updatedAcronym.long
                         return acronym.save(on: req)
